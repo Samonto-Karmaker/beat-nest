@@ -1,23 +1,16 @@
 import { Injectable } from "@nestjs/common";
+import { CreateSongDto } from "./dto/create_song_dto";
 
 @Injectable()
 export class SongsService {
-    private songs = [
-        {
-            id: 1,
-            title: "Song 1",
-            artist: "Artist 1",
-            album: "Album 1",
-        },
-        {
-            id: 2,
-            title: "Song 2",
-            artist: "Artist 2",
-            album: "Album 2",
-        },
-    ];
+    private songs: CreateSongDto[] = [];
 
     getAllSongs() {
         return this.songs;
+    }
+
+    createSong(song: CreateSongDto) {
+        this.songs.push(song);
+        return song;
     }
 }
